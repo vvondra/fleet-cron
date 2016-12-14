@@ -1,0 +1,36 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "http://dynamodb-local.s3-website-us-west-2.amazonaws.com/release"
+    }
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+
+    compile 'com.amazonaws:aws-java-sdk-dynamodb:1.11.66'
+    compile 'com.google.guava:guava:19.0'
+    compile 'org.apache.commons:commons-lang3:3.5'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.+'
+    testCompile 'com.amazonaws:DynamoDBLocal:1.11.0.1'
+}
+
+// Thanks http://stackoverflow.com/a/39086207/942390 for help setting up Local DynamoDB
+task copyNativeDeps(type: Copy) {
+    from(configurations.compile + configurations.testCompile) {
+        include '*.dll'
+        include '*.dylib'
+        include '*.so'
+    }
+    into 'build/libs'
+}
+
+test {
+    dependsOn copyNativeDeps
+    systemProperty "java.library.path", 'build/libs'
+}

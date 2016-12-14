@@ -30,6 +30,10 @@ public class DynamoDbLocker implements Locker {
 
     private final Clock clock;
 
+    public DynamoDbLocker(final DynamoDB dynamoDb, final String tableName) {
+        this(dynamoDb, tableName, Clock.systemUTC());
+    }
+
     public DynamoDbLocker(
         DynamoDB configuration,
         String tableName,

@@ -6,7 +6,7 @@ def mavenUser = hasProperty('sonatypeUsername') ? sonatypeUsername : System.gete
 def mavenPass = hasProperty('sonatypePassword') ? sonatypePassword : System.getenv('SONATYPE_PASS')
 
 group 'com.foodpanda'
-version '1.0.0'
+version '1.0.1'
 
 repositories {
     mavenCentral()

@@ -35,9 +35,9 @@ Locker locker = new DynamoDbLocker(
 );
 
 try {
-    locker.tryLock("lockKey", 10);
-
-    // do work
+    if (locker.tryLock("lockKey", 10)) {
+        // do work
+    }
 } finally {
     locker.unlock("lockKey");
 }

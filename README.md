@@ -4,9 +4,9 @@
 
 This library provides a distributed lock based on DynamoDB. It uses [conditional writes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html#WorkingWithItems.ConditionalUpdate) to check if a lock can be acquired.
 
-## Installation
+## Installation
 
-### Maven
+### Maven
 
 ```xml
 <dependencies>
@@ -18,7 +18,7 @@ This library provides a distributed lock based on DynamoDB. It uses [conditional
 </dependencies>
 ```
 
-### Gradle
+### Gradle
 
 ```groovy
 compile 'com.foodpanda:fleet-cron:1.0.0'
